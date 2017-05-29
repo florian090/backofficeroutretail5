@@ -1,0 +1,1555 @@
+/*
+sass --watch style.scss:D:\Florian\xampp\htdocs\florian\BackOffice\backofficeroutretail4\public\style\style.css
+*/
+
+@import "datepicker";
+// @font-face {
+//     font-family: acto;
+//     src: url(../fonts/Acto-SemiBold.otf);
+// }
+@mixin vertical-align($position: relative) {
+    position: $position;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+$width-sidebar: 260px;
+$switch-1: 30px;
+$switch-2: $switch-1 / 2;
+$color-gri-white: #fcfcfc;
+$color-gri-light: #f5f5f5;
+$color-gri-mid: #626262;
+$color-gri-dark: #263238;
+$color-cyan:#00bcd4;
+$color-blue: #03a9f4;
+$color-blue-dark:#245dc1;
+$color-blue-light:#a8bbdc;
+$color-green:#8bc34a;
+$color-green-light:#dcedc8;
+$color-orange:#fec107;
+$color-red-light:#f9bdbb;
+$color-red:#dd191d;
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+* {
+    position: relative;
+}
+
+html,
+body {
+    height: 100%;
+    color: $color-gri-mid;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#root {
+    height: 100%;
+}
+
+.butCancel,
+.butConfirm,
+.butOK {
+    font-size: 14px;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.butCancel {
+    background-color: $color-gri-mid;
+}
+
+.butConfirm {
+    background-color: #fec107;
+}
+
+.butOK {
+    background-color: $color-green;
+}
+
+.butCancel:hover {
+    background-color: darken($color-gri-mid, 10%);
+}
+
+.butConfirm:hover {
+    background-color: darken(#fec107, 10%);
+}
+
+.butOK:hover {
+    background-color: darken($color-green, 10%);
+}
+
+.react-datepicker__input-container input {
+    width: 145px;
+}
+
+.cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+
+.cmn-toggle+label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+input.cmn-toggle-round+label {
+    padding: 2px;
+    width: $switch-1;
+    height: $switch-2;
+    background-color: #dddddd;
+    border-radius: $switch-2;
+}
+
+input.cmn-toggle-round+label:before,
+input.cmn-toggle-round+label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+}
+
+input.cmn-toggle-round+label:before {
+    right: 1px;
+    background-color: $color-gri-white;
+    border-radius: $switch-2;
+    transition: background 0.4s;
+}
+
+input.cmn-toggle-round+label:after {
+    width: $switch-2 - 2px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: margin 0.4s;
+}
+
+input.cmn-toggle-round:checked+label:before {
+    background-color: $color-green;
+}
+
+input.cmn-toggle-round:checked+label:after {
+    margin-left: $switch-2;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: $color-gri-light;
+    overflow: hidden;
+    display: table;
+}
+
+.card {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ---------------------------------header--------------------------------- */
+
+.header {
+    height: 75px;
+    display: table-caption;
+    .header-dr {
+        float: right;
+        height: 100%;
+        .logout {
+            @include vertical-align();
+            padding: 12px;
+            background-color: $color-gri-light;
+            border-radius: 50%;
+            margin-left: 20px;
+            padding: 12px;
+            .img {
+                background: url('../img/icon/logout.png') center center no-repeat;
+                background-size: contain;
+                width: 21px;
+                height: 21px;
+            }
+        }
+        .logout:hover {
+            background-color: darken($color-gri-light, 10%);
+            cursor: pointer;
+        }
+    }
+    .header-st {
+        float: left;
+        height: 100%;
+        div {
+            float: left;
+        }
+        .header-menu {
+            @include vertical-align();
+            padding: 12px;
+            background-color: $color-gri-light;
+            border-radius: 50%;
+            margin-left: 20px;
+            padding: 12px;
+            .img {
+                background: url('../img/icon/menu.svg') center center no-repeat;
+                background-size: contain;
+                width: 21px;
+                height: 21px;
+            }
+        }
+        .header-menu:hover {
+            background-color: darken($color-gri-light, 10%);
+            cursor: pointer;
+        }
+        .header-title {
+            @include vertical-align();
+            left: 40px;
+            font-size: 22px;
+            font-weight: bold;
+            color: $color-gri-dark;
+        }
+    }
+    .logout {
+        top: 15px;
+        left: -20px;
+    }
+}
+
+.header.active+.sidebar {
+    width: 60px;
+    .dashbord-text,
+    h2 {
+        display: none;
+    }
+    .dashbord {
+        width: 60px;
+        ul li {
+            a {
+                .circle {
+                    display: none;
+                }
+                .img {
+                    margin-left: 16px;
+                }
+            }
+            ul {
+                display: none;
+                position: absolute;
+                left: 60px;
+                top: 0px;
+                z-index: 1000;
+                li a {
+                    padding: 11px 20px;
+                }
+            }
+        }
+    }
+    .dashbord ul li:hover ul {
+        display: block !important;
+    }
+}
+
+
+/* ---------------------------------coloana sidebar--------------------------------- */
+
+.sidebar {
+    // float: left;
+    display: table-cell;
+    width: $width-sidebar;
+    height: calc(100vh - 75px);
+    background-color: $color-gri-dark;
+    color: #90a4ae;
+    z-index: 500;
+    .profile {
+        display: none;
+        padding: 15px 30px;
+        overflow: hidden;
+        img {
+            display: block;
+            float: left;
+            border: 2px solid $color-blue;
+            border-radius: 50%;
+        }
+        .profil-date {
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+            .nume {
+                color: #fff;
+                font-size: 18px;
+            }
+            .email {
+                font-size: 12px;
+            }
+        }
+    }
+    .dashbord.fixed {
+        position: fixed;
+        margin-top: -45px;
+    }
+    .dashbord {
+        margin-top: 30px;
+        width: $width-sidebar;
+        h2 {
+            padding-left: 30px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        ul {
+            li {
+                .circle {
+                    width: 5px;
+                    height: 5px;
+                    background-color: #fff;
+                    opacity: 0;
+                    border-radius: 50%;
+                    float: left;
+                    margin: 0 15px 0 10px;
+                    @include vertical-align();
+                }
+                .triangle {
+                    // top: -23px;
+                    @include vertical-align();
+                    float: right;
+                    margin-right: 35px;
+                    width: 0;
+                    height: 0;
+                    border-top: 5px solid rgba(0, 0, 0, 0);
+                    border-bottom: 5px solid rgba(0, 0, 0, 0);
+                    border-left: 5px solid #90a4ae;
+                }
+                .img {
+                    float: left;
+                    width: 28px;
+                    height: 26px;
+                    @include vertical-align();
+                }
+                .img-bm {
+                    background: url(../img/icon/monitor.png) center center no-repeat;
+                }
+                .img-om {
+                    background: url(../img/icon/addsmanagement.png) center center no-repeat;
+                }
+                .img-lot {
+                    background: url(../img/icon/lotteries.png) center center no-repeat;
+                }
+                .img-df {
+                    background: url(../img/icon/datafeed.png) center center no-repeat;
+                }
+                .img-user {
+                    background: url(../img/icon/users.png) center center no-repeat;
+                }
+                .img-rep {
+                    background: url(../img/icon/reports.png) center center no-repeat;
+                }
+                .dashbord-text {
+                    @include vertical-align();
+                    float: left;
+                    display: block;
+                    margin-left: 15px;
+                }
+                .counter {
+                    float: left;
+                    position: absolute;
+                    top: 4px;
+                    left: 49px;
+                    background-color: $color-orange;
+                    color: #fff;
+                    border-radius: 3px;
+                    padding: 0 2px;
+                    font-size: 12px;
+                }
+                a {
+                    display: block;
+                    color: #90a4ae;
+                    padding: 20px 0;
+                }
+                ul {
+                    display: none;
+                    background-color: #1c2429;
+                    li {
+                        a {
+                            padding: 10px 0 10px 60px;
+                        }
+                    }
+                }
+            }
+            li:hover {
+                background-color: #455a64;
+            }
+            .active {
+                background-color: #455a64; // padding-bottom: 0;
+                .circle {
+                    opacity: 1;
+                }
+                .img-bm {
+                    background: url(../img/icon/monitor-w.png) center center no-repeat;
+                }
+                .img-om {
+                    background: url(../img/icon/addsmanagement-w.png) center center no-repeat;
+                }
+                .img-lot {
+                    background: url(../img/icon/lotteries-w.png) center center no-repeat;
+                }
+                .img-df {
+                    background: url(../img/icon/datafeed-w.png) center center no-repeat;
+                }
+                .img-user {
+                    background: url(../img/icon/users-w.png) center center no-repeat;
+                }
+                .img-rep {
+                    background: url(../img/icon/reports-w.png) center center no-repeat;
+                }
+                .triangle {
+                    //     border-left: 5px solid rgba(0, 0, 0, 0);
+                    //     border-right: 5px solid rgba(0, 0, 0, 0);
+                    //     border-bottom: 1px solid rgba(0, 0, 0, 0);
+                    //     border-top: 5px solid #90a4ae;
+                    // }
+                    // ul {
+                    //     display: block;
+                }
+            }
+            .active+ul {
+                display: block;
+            }
+        }
+    }
+}
+
+
+/* ---------------------------------coloana main--------------------------------- */
+
+.main {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 55px;
+    width: calc(100% - $width-sidebar);
+    .breadcrumbs {
+        width: 100%;
+        color: $color-cyan;
+        font-size: 12px;
+        margin: 15px 0 55px 0;
+        text-transform: capitalize;
+        span {
+            float: left;
+        }
+        .triangle {
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 3px solid $color-cyan;
+            margin: 0 5px;
+            top: 5px;
+        }
+    }
+    .con-card-casa {
+        .card-casa:nth-child(3n) {
+            margin-right: 0;
+        }
+        .card-casa {
+            width: calc(100% / 3 - 37px);
+            min-width: 430px;
+            float: left;
+            margin-right: 55px;
+            margin-bottom: 50px;
+            color: $color-gri-mid;
+            .card-casa-header {
+                width: 100%;
+                height: 110px;
+                background-color: #fff;
+                margin-bottom: 25px;
+                img {
+                    @include vertical-align();
+                    float: left;
+                }
+                .pre-win {
+                    // background-color: #0f0;
+                    float: right;
+                    @include vertical-align();
+                    h2 {
+                        font-size: 14px;
+                        text-align: center;
+                        padding-right: 20px;
+                        margin-bottom: 15px;
+                    }
+                    .con-pre-win-value {
+                        float: left;
+                        margin-right: 20px;
+                        text-align: center;
+                        .pre-win-value {
+                            font-weight: bold;
+                            font-size: 18px;
+                            font-family: 'acto', sans-serif;
+                            width: 35px;
+                            line-height: 35px;
+                            background-color: #40aaa0;
+                            display: table;
+                            border-radius: 50%;
+                            color: #fff;
+                            text-align: center;
+                            margin-bottom: 7px;
+                            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+                        }
+                        .pre-win-value-text {
+                            font-size: 12px;
+                        }
+                        span:nth-child(2) {
+                            position: absolute;
+                        }
+                    }
+                    .con-pre-win-value:nth-child(3) {
+                        .pre-win-value {
+                            background-color: $color-orange;
+                        }
+                    }
+                    .con-pre-win-value:nth-child(4) {
+                        .pre-win-value {
+                            background-color: #e25358;
+                        }
+                    }
+                }
+            }
+            .card-casa-body {
+                width: 100%;
+                background-color: #fff;
+                padding: 16px;
+                overflow: hidden;
+                .card-casa-body-top {
+                    float: left;
+                    width: 100%;
+                    margin-bottom: 30px;
+                    h3 {
+                        float: left;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    .switch {
+                        float: right;
+                    }
+                }
+                .card-casa-body-mid {
+                    float: left;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 16px;
+                    .rn {
+                        font-size: 14px;
+                        line-height: 16px;
+                    }
+                    .nr {
+                        font-size: 36px;
+                        border-radius: 50%;
+                        line-height: 96px;
+                        padding: 0 16px;
+                        background: $color-gri-light;
+                        width: 96px;
+                        height: 96px;
+                        margin: 16px auto;
+                        color: $color-gri-dark;
+                    }
+                    .acu {
+                        font-size: 12px;
+                    }
+                }
+                .card-casa-body-bot {
+                    float: left;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .view-more {
+        line-height: 32px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: $color-blue;
+        color: #fff;
+        text-align: center;
+        margin-top: 25px;
+        border-radius: 2px;
+        transition: all 0.3s; // float: left;
+        // width: 100%;
+    }
+    .view-more:hover {
+        background-color: darken( $color-blue, 10%);
+        cursor: pointer;
+    }
+    .panel-header-filtru {
+        // height: 50px;
+        background-color: #b2ebf2;
+        padding-left: 10px;
+        overflow: hidden;
+        div,
+        input {
+            float: left;
+        }
+        .con-filtru {
+            // @include vertical-align();
+            .filtru-item-username {
+                margin-top: 4px;
+                float: left;
+            }
+        }
+        .title {
+            top: 4px;
+        }
+        .img {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border: 1px solid $color-gri-mid;
+            margin: 0 5px 0 10px;
+            img {
+                width: 15px;
+                margin-left: 6px;
+                margin-top: 6px;
+            }
+        }
+        .filtru-item {
+            margin: 10px;
+            input,
+            select {
+                height: 30px;
+                border: 1px solid $color-gri-mid;
+                padding: 0 10px;
+            }
+            input[type="text"] {
+                width: 130px;
+            }
+            span {
+                margin-right: 5px;
+            }
+            .to {
+                background-color: $color-gri-white;
+                border-top: 1px solid $color-gri-mid;
+                border-bottom: 1px solid $color-gri-mid;
+                line-height: 28px;
+                padding: 0 5px;
+            }
+        }
+        .data-range {
+            height: 31px;
+        }
+    }
+    .panel-header-filtru.no-filtre {
+        display: none;
+    }
+    .con-panel {
+        width: 100%;
+        .panel-header {
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+            .panel-header-top {
+                color: #fff;
+                background-color: $color-cyan;
+                padding: 0 10px;
+                height: 50px;
+                overflow: hidden;
+                width: 100%;
+                .left {
+                    @include vertical-align();
+                    float: left;
+                }
+                .right {
+                    @include vertical-align();
+                    float: right;
+                    div {
+                        border-radius: 5px;
+                        float: left;
+                        margin-left: 10px;
+                        transition: 0.3s all;
+                        .img {
+                            display: block;
+                            padding: 18px;
+                        }
+                        .img.reload {
+                            background: url('../img/icon/reload.png')center center no-repeat;
+                        }
+                        .img.down {
+                            background: url('../img/icon/arrow-down.png')center center no-repeat;
+                        }
+                        .img.print {
+                            background: url('../img/icon/print.png')center center no-repeat;
+                        }
+                        .img.xls {
+                            background: url('../img/icon/xls.png')center center no-repeat;
+                        }
+                        .img.addUser {
+                            background: url('../img/icon/add-user.png')center center no-repeat;
+                            width: 100px;
+                        }
+                        .img.addBetshop {
+                            background: url('../img/icon/add-betshop.png')center center no-repeat;
+                            width: 120px;
+                        }
+                        .img.addGroup {
+                            background: url('../img/icon/add-group.png') center center no-repeat;
+                            width: 120px;
+                        }
+                    }
+                    div:hover {
+                        background-color: rgba(0, 0, 0, 0.1);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .panel-header.hide .down {
+            transform: rotate(180deg);
+        }
+        .panel-header.green {
+            .panel-header-top {
+                background-color: $color-green;
+            }
+            .panel-header-filtru {
+                background-color: $color-green-light;
+            }
+        }
+        .panel-header.green+.con-panel table {
+            border-top: 2px solid $color-green;
+        }
+        .panel-header.blue {
+            .panel-header-top {
+                background-color: $color-blue-dark;
+            }
+            .panel-header-filtru {
+                background-color: $color-blue-light;
+            }
+        }
+        .panel-header.blue+.con-panel table {
+            border-top: 2px solid $color-blue-dark;
+        }
+        .panel-header.hide+.con-panel {
+            display: none;
+        }
+        .panel-header.loading+.con-panel {
+            .panel-body {
+                opacity: 0.5;
+            }
+        }
+        .panel-body {
+            .panel-body-title {
+                padding: 0 10px;
+                height: 50px;
+                overflow: hidden;
+                width: 100%;
+                background-color: #b2ebf2;
+                margin-bottom: 10px;
+                .left {
+                    @include vertical-align();
+                    float: left;
+                }
+                .right {
+                    @include vertical-align();
+                    float: right;
+                    img {
+                        margin-left: 30px;
+                    }
+                }
+            }
+            table {
+                width: 100%;
+                background-color: #fff;
+                font-size: 14px;
+                border-top: 2px solid $color-cyan;
+                text-align: left;
+                margin-bottom: 25px;
+                border-collapse: collapse;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+                th,
+                td {
+                    padding: 8px 6px 15px 6px;
+                    text-align: center;
+                    max-width: 240px;
+                    overflow: auto;
+                    text-transform: capitalize;
+                }
+                tbody {
+                    tr:nth-child(odd) {
+                        background-color: $color-gri-white;
+                        border-top: 1px solid darken( $color-gri-white, 10%);
+                        border-bottom: 1px solid darken( $color-gri-white, 10%);
+                    }
+                    tr:hover {
+                        background-color: $color-cyan;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    } // .con-panel.panel-verde .panel-header-top {
+    //     background-color: $color-green-light;
+    // }
+    // .con-panel.panel-verde .panel-header-filtru {
+    //     background-color: #dcedc8;
+    // }
+    // .con-panel.panel-verde table {
+    //     border-top: 2px solid $color-green-light;
+    // }
+    /* -------------------------------odds management------------------------------- */
+    .oddsm-item:nth-child(even) {
+        margin-right: 0;
+    }
+    .oddsm-item {
+        width: calc(50% - 25px);
+        margin-right: 50px;
+        overflow: hidden;
+        float: left;
+        margin-bottom: 50px;
+        .oddsm-item-header {
+            overflow: hidden;
+            margin-bottom: 25px;
+            .oddsm-item-header-item {
+                // float: left;
+                display: inline-block;
+                width: calc(50% - 25px);
+                padding: 10px;
+                background-color: $color-gri-dark;
+                img {
+                    padding: 18px 0;
+                    margin: auto;
+                    display: block;
+                }
+                .oihi-value {
+                    float: left;
+                    color: #fff;
+                    width: calc(50% - 25px);
+                    text-align: center;
+                    .oihi-value-top {
+                        font-size: 14px;
+                    }
+                    .oihi-value-mid {
+                        // width: 48px;
+                        font-size: 24px;
+                        display: inline-block;
+                        margin: 5px;
+                        line-height: 46px;
+                        border-radius: 50%;
+                    }
+                    .oihi-value-bot {
+                        font-size: 12px;
+                    }
+                }
+                .oihi-value:first-child {
+                    margin-left: 25px;
+                }
+            }
+            .oddsm-item-header-item:first-child {
+                margin-right: 46px;
+                background-color: #fff;
+            }
+        }
+    }
+    /* ---------------------------odds history--------------------------- */
+    .history {
+        // width: calc(50% - 25px);
+        background-color: #fff;
+        float: left;
+        padding: 10px;
+        h1 {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #afafaf;
+        }
+        .history-body {
+            display: table;
+            width: 100%;
+            .history-row {
+                width: 100%;
+                display: table-row;
+                .history-circle {
+                    div {
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        border: 1px solid #cddc39;
+                        top: 3px;
+                    }
+                }
+                .history-cell {
+                    display: table-cell;
+                    padding: 0 10px;
+                    line-height: 14px;
+                    font-size: 14px;
+                    padding-bottom: 10px;
+                }
+                .history-cell:nth-child(n+1):nth-child(odd):nth-child(-n+5),
+                .history-cell:nth-child(8) {
+                    color: #afafaf;
+                }
+            }
+            .history-row:nth-of-type(2n) .history-circle div {
+                border: 1px solid #ff5722;
+            }
+            .history-line {
+                div {
+                    width: 1px;
+                    height: 35px;
+                    border: 1px solid darken( $color-gri-white, 10%);
+                    left: 7px;
+                }
+            }
+        }
+    }
+    /*----------------------------lotteries----------------------------*/
+    .lot-col-st {
+        float: left;
+        width: 350px;
+        margin-right: 50px;
+        .lot-casa-item {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 50px;
+            .lot-casa-logo img {
+                margin: auto;
+                display: block;
+            }
+            .view-more {
+                margin-top: 3px;
+            }
+        }
+    }
+    .lot-col-dr {
+        float: left;
+        width: calc(100% - 400px);
+        color: #afafaf;
+        .lot-col-dr-item {
+            background-color: #fff;
+            padding: 10px 0;
+            overflow: hidden;
+            margin-bottom: 50px;
+            .lot-col-dr-lotteries {
+                width: 50%;
+                overflow: hidden;
+                float: left;
+                padding: 0 10px;
+                .lcdl-title {
+                    font-weight: bold;
+                    margin-bottom: 2px;
+                }
+                .con-lcdl-active,
+                .con-lcdl-inactive {
+                    float: left;
+                    text-align: center;
+                    .lcdl-val {
+                        font-size: 26px;
+                        padding: 0 30px;
+                        color: $color-gri-dark;
+                    }
+                    .lcdl-val-text {
+                        font-size: 12px;
+                        color: $color-gri-mid;
+                    }
+                }
+                .con-lcdl-inactive {
+                    float: right;
+                }
+                .lcdl-bar {
+                    background-color: $color-orange;
+                    width: 100%;
+                    height: 5px;
+                    margin-bottom: 5px;
+                    float: left;
+                    margin-top: 15px;
+                    .lcdl-bar2 {
+                        background-color: $color-green;
+                        height: 5px;
+                    }
+                }
+            }
+        }
+    }
+    /*---------------------------lotterise casa---------------------------*/
+    // .con-panel.lot-casa {
+    //     .panel-header-top {
+    //         background-color: $color-green-light;
+    //     }
+    //     .panel-header-filtru {
+    //         background-color: #dcedc8;
+    //     }
+    //     .panel-body table {
+    //         border-top: 2px solid $color-green-light;
+    //     }
+    // }
+    /*-----------------------user-----------------------*/
+    .userItem:nth-child(even) {
+        margin-right: 0;
+    }
+    .userItem {
+        // width: calc(25% - 25px);
+        width: calc(50% - 12px);
+        float: left;
+        margin: 0 24px 50px 0;
+        .userItem-st {
+            // width: calc(50% - 25px);
+            width: 46%;
+            float: left;
+            margin-right: 13px;
+        }
+        .userItem-st {
+            // margin-right: 50px;
+            .userItem-st-casa {
+                background-color: #fff;
+                padding: 10px;
+                margin-bottom: 35px;
+            }
+            .userItem-st-casa-logo img {
+                margin: auto;
+                display: block;
+            }
+        }
+        .userItem-dr {
+            float: left;
+        }
+        .user-real-time {
+            background-color: #fff;
+            padding: 10px;
+            overflow: hidden;
+            color: $color-gri-mid;
+            .user-real-time-top {
+                width: 100%;
+                float: left;
+                h3 {
+                    float: left;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .refresh {
+                    float: right;
+                }
+            }
+            .user-real-time-body {
+                width: 100%;
+                float: left;
+                .rn {
+                    font-size: 14px;
+                    line-height: 16px;
+                    text-align: center;
+                }
+                .con-nr {
+                    .nr-col {
+                        float: left;
+                        width: 50%;
+                        span:first-child {
+                            font-size: 36px;
+                            border-radius: 50%;
+                            line-height: 96px;
+                            padding: 0 16px;
+                            background: $color-gri-light;
+                            width: 96px;
+                            height: 96px;
+                            margin: 16px auto;
+                            color: $color-gri-dark;
+                            display: block;
+                            text-align: center;
+                        }
+                        span:last-child {
+                            display: block;
+                            text-align: center;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            .user-real-time-bot {
+                float: left;
+                width: 100%;
+            }
+        }
+    }
+    /*-----------------------user casa-----------------------*/
+    .con-user-casa {
+        .con-panel .panel-header-top.blue {
+            background-color: $color-blue-dark;
+        }
+        .user-casa-top {
+            width: 100%;
+            float: left;
+            .user-casa-top-logo {
+                // max-width: 350px;
+                background-color: #fff;
+                width: 22.6%;
+                padding: 58px;
+                float: left;
+                margin-right: 35px;
+                img {
+                    margin: auto;
+                    display: block;
+                }
+            }
+            .user-casa-top-gamesis {
+                float: left;
+                width: calc(100% - 22.6% - 35px);
+                .panel-body-title {
+                    padding: 0 10px;
+                    height: 50px;
+                    overflow: hidden;
+                    width: 100%;
+                    background-color: $color-blue-dark;
+                    margin-bottom: 23px;
+                    color: #fff;
+                    .left {
+                        @include vertical-align();
+                        float: left;
+                    }
+                    .right {
+                        @include vertical-align();
+                        float: right;
+                    }
+                }
+                table {
+                    width: 100%;
+                    background-color: #fff;
+                    font-size: 14px;
+                    border-top: 2px solid $color-blue-dark;
+                    text-align: left;
+                    margin-bottom: 25px;
+                    border-collapse: collapse;
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+                    th,
+                    td {
+                        padding: 15px 0 15px 10px;
+                    }
+                }
+            }
+        }
+    }
+    .reportsLoop {
+        overflow: hidden;
+        table {
+            thead tr th {
+                color: $color-gri-dark !important;
+            }
+            tr td {
+                color: $color-gri-mid !important;
+            }
+        }
+    }
+}
+
+.con-pop-bg.active {
+    display: block;
+}
+
+.con-alert {
+    width: 270px;
+    height: 80px;
+    color: $color-gri-dark;
+    position: fixed;
+    z-index: 100;
+    right: 20px;
+    bottom: -80px;
+    padding: 20px;
+    border-radius: 5px;
+    transition: all 0.5s;
+    .alert-cancel {
+        background-color: rgba(0, 0, 0, 0);
+        float: right;
+        top: -15px;
+        right: -15px;
+    }
+    .alert-cancel:hover {
+        cursor: pointer;
+    }
+    .alert {
+        @include vertical-align();
+    }
+    .alert-bar {
+        width: 100%;
+        height: 5px;
+        top: 30px;
+        transition: width 0s;
+    }
+    .alert-bar.active {
+        width: 0%;
+        transition: width 3s linear;
+    }
+}
+
+.con-alert.succes,
+.con-alert.status {
+    background-color: $color-green-light;
+    .alert-cancel {
+        color: $color-green;
+    }
+    .alert-cancel:hover {
+        color: darken($color-green-light, 10%);
+    }
+    .alert-bar {
+        background-color: $color-green;
+    }
+}
+
+.con-alert.error {
+    background-color: $color-red-light;
+    .alert-cancel {
+        color: $color-red;
+    }
+    .alert-cancel:hover {
+        color: darken($color-red-light, 10%);
+    }
+    .alert-bar {
+        background-color: $color-red;
+    }
+}
+
+.con-alert.pending {
+    background-color: $color-orange;
+    .alert-cancel {
+        color: darken($color-orange, 10%);
+    }
+    .alert-cancel:hover {
+        color: darken($color-orange, 20%);
+    }
+    .alert-bar {
+        background-color: darken($color-orange, 10%);
+    }
+}
+
+.con-alert.active {
+    display: block;
+    bottom: 20px;
+}
+
+.con-pop-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9000;
+    text-align: center;
+    display: none;
+    .con-pop {
+        background-color: #fff;
+        text-align: left;
+        width: 70%;
+        margin: auto;
+        margin-top: 30vh;
+        .pop-header {
+            padding: 15px;
+            background-color: $color-gri-light;
+        }
+        .pop-header.blue {
+            background-color: $color-blue-dark;
+            color: #fff;
+        }
+        .pop-header.green {
+            background-color: $color-green;
+            color: #fff;
+        }
+        .pop-header.cyan {
+            background-color: $color-cyan;
+            color: #fff;
+        }
+        .pop-mid.notification {
+            text-align: center;
+            padding: 60px;
+        }
+        .pop-mid {
+            display: table;
+            width: 100%;
+            padding: 15px;
+            div {
+                margin-left: 10px;
+                display: table-cell;
+                text-align: center;
+            }
+        }
+        .pop-mid div:last-child {
+            text-align: right;
+        }
+        .pop-footer {
+            text-align: right;
+            padding: 10px 15px;
+            background-color: $color-gri-light;
+            button {
+                margin-left: 10px;
+                white-space: nowrap;
+                width: 110px;
+            }
+            .prewin {
+                background-color: $color-orange !important;
+            }
+        }
+        .con-bile-selectate {
+            overflow: hidden;
+            height: 50px;
+            padding: 0 15px;
+            margin-bottom: 15px;
+            .bile-selectate div {
+                float: left;
+            }
+            .sisteme {
+                float: right;
+                top: 10px;
+            }
+            .con-nrSelectate {
+                width: 80%;
+                display: flex;
+                .nrSelectate {
+                    margin: auto;
+                }
+            }
+        }
+        .client-management {
+            display: table;
+            width: 100%;
+            .client-management-cell {
+                display: table-cell;
+                text-align: center;
+                input {
+                    width: 100px;
+                }
+                div {
+                    padding: 15px 0;
+                }
+                div:nth-child(2) {
+                    border-top: 1px solid darken( $color-gri-white, 10%);
+                    background-color: $color-gri-white;
+                }
+                div:nth-child(3) {
+                    background-color: #a8bbdc;
+                }
+            }
+            .client-management-cell:nth-child(n+1):nth-child(-n+2) {
+                input {
+                    opacity: 0;
+                }
+            }
+        }
+        .odds-management {
+            width: 100%;
+            overflow: auto;
+            display: table;
+            div {
+                display: table-cell;
+                text-align: center;
+                background-color: #b2ebf2;
+                vertical-align: middle;
+                input {
+                    width: 100px;
+                    margin: 18px 0;
+                }
+                span {
+                    display: block;
+                    padding: 18px 0;
+                    background-color: $color-gri-white;
+                    border-top: 1px solid darken($color-gri-white, 10%)
+                }
+            }
+            .odds-management-row {
+                display: table;
+                width: 100%;
+                height: 54px;
+                div {
+                    background-color: #fff;
+                }
+            }
+            .odds-management-row.input {
+                div {
+                    background-color: #b2ebf2;
+                }
+            }
+        }
+    }
+    .add {
+        display: table;
+        width: 100%;
+        height: 54px;
+        div {
+            display: table-cell;
+            text-align: center;
+            background-color: #b2ebf2;
+            vertical-align: middle;
+            span {
+                display: block;
+                padding: 18px 0;
+                background-color: #fcfcfc;
+                border-top: 1px solid #e3e3e3;
+            }
+            input,
+            select {
+                min-width: 200px;
+                height: 25px;
+                margin: 18px 0;
+            }
+        }
+    }
+}
+
+.pop-con-bile {
+    background-color: #85d9fe;
+    padding: 15px;
+    .bila {
+        width: 40px;
+        height: 40px;
+        margin: 3px 0 0 3px;
+        background-image: url(../img/bile/bila-default.png);
+        background-size: 40px;
+        z-index: 100;
+        text-align: center;
+        display: inline-block !important;
+        color: #fff;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 38px;
+        span {
+            color: #fff;
+        }
+    }
+    .bila-select {
+        background-image: url(../img/bile/bila-select.png);
+    }
+}
+
+.con-login-bg {
+    padding-top: 20vh;
+}
+
+.logo-app {
+    width: 190px;
+    margin: auto;
+    display: block;
+    padding-bottom: 50px;
+}
+
+.login-bg {
+    background: url("../img/registration_background.jpg");
+    height: 100vh;
+}
+
+.con-login {
+    display: table;
+    margin: auto;
+    width: 500px;
+    background-color: #fff;
+    .con-login-header {
+        padding: 20px 30px;
+        background-color: $color-gri-light;
+        h1 {
+            font-size: 16px;
+        }
+    }
+    .con-login-body {
+        padding: 20px 30px;
+        .login-input {
+            width: 100%;
+            margin-bottom: 20px;
+            .login-input-img {
+                width: 35px;
+                height: 35px;
+                float: left;
+                border: 1px solid darken($color-gri-light, 10%);
+            }
+            .login-input-img.user {
+                background: url(../img/icon/user.png) center center no-repeat;
+                background-color: $color-gri-light;
+            }
+            .login-input-img.pass {
+                background: url(../img/icon/key.png) center center no-repeat;
+                background-color: $color-gri-light;
+            }
+            img {
+                width: 20px;
+                top: 4px;
+                margin-right: 5px;
+            }
+            input {
+                width: 90%;
+                border: 1px solid darken($color-gri-light, 10%);
+                height: 35px;
+                padding-left: 10px;
+            }
+        }
+        .forgot {
+            padding-bottom: 50px;
+            .left {
+                float: left;
+                color: $color-blue;
+                display: none;
+            }
+            .right {
+                float: right;
+                input {
+                    height: 14px;
+                    width: 14px;
+                    top: 2px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .login-but {
+        display: table;
+        margin: auto;
+        background-color: $color-blue;
+        padding: 10px 20px;
+        color: #fff;
+    }
+    .login-but:hover {
+        cursor: pointer;
+        background-color: darken($color-blue, 10%);
+    }
+}
+
+.pag404 {
+    font-size: 64px;
+}
+
+.load-more {
+    margin: auto;
+    display: block;
+    color: #fff;
+    background-color: $color-cyan;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.float-l {
+    float: left;
+}
+
+.dn {
+    display: none;
+}
+
+@media print {
+    .sidebar,
+    .header,
+    .panel-header,
+    .panel-body {
+        display: none;
+    }
+    .panel-header.print+.con-panel .panel-body {
+        display: block;
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
