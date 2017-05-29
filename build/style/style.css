@@ -1,5 +1,5 @@
 /*
-sass --watch style.scss:D:\Florian\xampp\htdocs\florian\BackOffice\backofficerout4\public\style\style.css
+sass --watch style.scss:D:\Florian\xampp\htdocs\florian\BackOffice\backofficeroutretail4\public\style\style.css
 */
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow {
@@ -350,7 +350,8 @@ body {
   height: 100%; }
 
 .butCancel,
-.butConfirm {
+.butConfirm,
+.butOK {
   font-size: 14px;
   padding: 10px 20px;
   color: #fff;
@@ -362,13 +363,19 @@ body {
   background-color: #626262; }
 
 .butConfirm {
-  background-color: #89c54b; }
+  background-color: #fec107; }
+
+.butOK {
+  background-color: #8bc34a; }
 
 .butCancel:hover {
   background-color: #494949; }
 
 .butConfirm:hover {
-  background-color: #6fa736; }
+  background-color: #d19e01; }
+
+.butOK:hover {
+  background-color: #71a436; }
 
 .react-datepicker__input-container input {
   width: 145px; }
@@ -789,20 +796,13 @@ input.cmn-toggle-round:checked + label:after {
   .main .panel-header-filtru {
     background-color: #b2ebf2;
     padding-left: 10px;
-    height: 50px;
     overflow: hidden; }
     .main .panel-header-filtru div,
     .main .panel-header-filtru input {
       float: left; }
-    .main .panel-header-filtru .con-filtru {
-      position: relative;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%); }
-      .main .panel-header-filtru .con-filtru .filtru-item-username {
-        margin-top: 4px;
-        float: left; }
+    .main .panel-header-filtru .con-filtru .filtru-item-username {
+      margin-top: 4px;
+      float: left; }
     .main .panel-header-filtru .title {
       top: 4px; }
     .main .panel-header-filtru .img {
@@ -815,21 +815,27 @@ input.cmn-toggle-round:checked + label:after {
         width: 15px;
         margin-left: 6px;
         margin-top: 6px; }
-    .main .panel-header-filtru .filtru-item input,
-    .main .panel-header-filtru .filtru-item select {
-      height: 30px;
-      border: 1px solid #626262;
-      padding: 0 10px; }
-    .main .panel-header-filtru .filtru-item input[type="text"] {
-      width: 130px; }
-    .main .panel-header-filtru .filtru-item span {
-      margin-right: 5px; }
-    .main .panel-header-filtru .filtru-item .to {
-      background-color: #fcfcfc;
-      border-top: 1px solid #626262;
-      border-bottom: 1px solid #626262;
-      line-height: 28px;
-      padding: 0 5px; }
+    .main .panel-header-filtru .filtru-item {
+      margin: 10px; }
+      .main .panel-header-filtru .filtru-item input,
+      .main .panel-header-filtru .filtru-item select {
+        height: 30px;
+        border: 1px solid #626262;
+        padding: 0 10px; }
+      .main .panel-header-filtru .filtru-item input[type="text"] {
+        width: 130px; }
+      .main .panel-header-filtru .filtru-item span {
+        margin-right: 5px; }
+      .main .panel-header-filtru .filtru-item .to {
+        background-color: #fcfcfc;
+        border-top: 1px solid #626262;
+        border-bottom: 1px solid #626262;
+        line-height: 28px;
+        padding: 0 5px; }
+    .main .panel-header-filtru .data-range {
+      height: 31px; }
+  .main .panel-header-filtru.no-filtre {
+    display: none; }
   .main .con-panel {
     width: 100%; }
     .main .con-panel .panel-header {
@@ -858,8 +864,8 @@ input.cmn-toggle-round:checked + label:after {
           transform: translateY(-50%);
           float: right; }
           .main .con-panel .panel-header .panel-header-top .right div {
+            border-radius: 5px;
             float: left;
-            border-radius: 50%;
             margin-left: 10px;
             transition: 0.3s all; }
             .main .con-panel .panel-header .panel-header-top .right div .img {
@@ -867,11 +873,26 @@ input.cmn-toggle-round:checked + label:after {
               padding: 18px; }
             .main .con-panel .panel-header .panel-header-top .right div .img.reload {
               background: url("../img/icon/reload.png") center center no-repeat; }
-            .main .con-panel .panel-header .panel-header-top .right div .img.arrow-down {
+            .main .con-panel .panel-header .panel-header-top .right div .img.down {
               background: url("../img/icon/arrow-down.png") center center no-repeat; }
+            .main .con-panel .panel-header .panel-header-top .right div .img.print {
+              background: url("../img/icon/print.png") center center no-repeat; }
+            .main .con-panel .panel-header .panel-header-top .right div .img.xls {
+              background: url("../img/icon/xls.png") center center no-repeat; }
+            .main .con-panel .panel-header .panel-header-top .right div .img.addUser {
+              background: url("../img/icon/add-user.png") center center no-repeat;
+              width: 100px; }
+            .main .con-panel .panel-header .panel-header-top .right div .img.addBetshop {
+              background: url("../img/icon/add-betshop.png") center center no-repeat;
+              width: 120px; }
+            .main .con-panel .panel-header .panel-header-top .right div .img.addGroup {
+              background: url("../img/icon/add-group.png") center center no-repeat;
+              width: 120px; }
           .main .con-panel .panel-header .panel-header-top .right div:hover {
             background-color: rgba(0, 0, 0, 0.1);
             cursor: pointer; }
+    .main .con-panel .panel-header.hide .down {
+      transform: rotate(180deg); }
     .main .con-panel .panel-header.green .panel-header-top {
       background-color: #8bc34a; }
     .main .con-panel .panel-header.green .panel-header-filtru {
@@ -1223,13 +1244,17 @@ input.cmn-toggle-round:checked + label:after {
     width: 0%;
     transition: width 3s linear; }
 
-.con-alert.succes {
+.con-alert.succes,
+.con-alert.status {
   background-color: #dcedc8; }
-  .con-alert.succes .alert-cancel {
+  .con-alert.succes .alert-cancel,
+  .con-alert.status .alert-cancel {
     color: #8bc34a; }
-  .con-alert.succes .alert-cancel:hover {
+  .con-alert.succes .alert-cancel:hover,
+  .con-alert.status .alert-cancel:hover {
     color: #c4e0a2; }
-  .con-alert.succes .alert-bar {
+  .con-alert.succes .alert-bar,
+  .con-alert.status .alert-bar {
     background-color: #8bc34a; }
 
 .con-alert.error {
@@ -1240,6 +1265,15 @@ input.cmn-toggle-round:checked + label:after {
     color: #f5908c; }
   .con-alert.error .alert-bar {
     background-color: #dd191d; }
+
+.con-alert.pending {
+  background-color: #fec107; }
+  .con-alert.pending .alert-cancel {
+    color: #d19e01; }
+  .con-alert.pending .alert-cancel:hover {
+    color: #9e7701; }
+  .con-alert.pending .alert-bar {
+    background-color: #d19e01; }
 
 .con-alert.active {
   display: block;
@@ -1273,6 +1307,9 @@ input.cmn-toggle-round:checked + label:after {
     .con-pop-bg .con-pop .pop-header.cyan {
       background-color: #00bcd4;
       color: #fff; }
+    .con-pop-bg .con-pop .pop-mid.notification {
+      text-align: center;
+      padding: 60px; }
     .con-pop-bg .con-pop .pop-mid {
       display: table;
       width: 100%;
@@ -1350,6 +1387,25 @@ input.cmn-toggle-round:checked + label:after {
           background-color: #fff; }
       .con-pop-bg .con-pop .odds-management .odds-management-row.input div {
         background-color: #b2ebf2; }
+  .con-pop-bg .add {
+    display: table;
+    width: 100%;
+    height: 54px; }
+    .con-pop-bg .add div {
+      display: table-cell;
+      text-align: center;
+      background-color: #b2ebf2;
+      vertical-align: middle; }
+      .con-pop-bg .add div span {
+        display: block;
+        padding: 18px 0;
+        background-color: #fcfcfc;
+        border-top: 1px solid #e3e3e3; }
+      .con-pop-bg .add div input,
+      .con-pop-bg .add div select {
+        min-width: 200px;
+        height: 25px;
+        margin: 18px 0; }
 
 .pop-con-bile {
   background-color: #85d9fe;
@@ -1450,7 +1506,7 @@ input.cmn-toggle-round:checked + label:after {
   margin: auto;
   display: block;
   color: #fff;
-  background-color: #8bc34a;
+  background-color: #00bcd4;
   padding: 10px 20px;
   margin-bottom: 30px; }
 
@@ -1462,5 +1518,20 @@ input.cmn-toggle-round:checked + label:after {
 
 .dn {
   display: none; }
+
+@media print {
+  .sidebar,
+  .header,
+  .panel-header,
+  .panel-body {
+    display: none; }
+
+  .panel-header.print + .con-panel .panel-body {
+    display: block;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -39,7 +39,7 @@ class BasicExample extends React.Component {
 
   render() {
     // console.log(this.props);
-    if (this.props.logIn === false) {
+    if (this.props.logIn === true) {
       return (
         <Router>
           <div className="container">
